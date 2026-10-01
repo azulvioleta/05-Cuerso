@@ -1,259 +1,175 @@
-@font-face{
-    font-family: 'OpenDescarga' ;
-    src: url('../fonts/OpenSans-Regular.ttf') format('woff2');/*  ..  salir del css*/
+@font-face {
+    font-family: 'OpenDescarga';
+    src: url('../fonts/OpenSans-Regular.ttf') format('truetype'); /* Corregido formato de ttf */
 }
-/*VARIABLES*/
-:root{
-    /*se declaran con --*/
-    --colorPrincipal:#272829;
-    --colorSecundario: #109b45;
-    --colorObscuro:#2b2b2b;
+
+:root {
+    --colorPrincipal: #272829;
+    --colorSecundario: #109b45; /* Verde UTL */
+    --colorObscuro: #2b2b2b;
     --colorClaro: #fff;
     --colorFondo: #f4f7f6;
     --colorBorde: #e0e0e0;
 
-    --fuenteTitulos:'Montserrat';
-    --fuenteCuerpo:'OpenDescargada';
+    --fuenteTitulos: 'Montserrat', sans-serif;
+    --fuenteCuerpo: 'OpenDescarga', sans-serif; /* Corregido nombre */
 }
-*{
+
+/* ==========================================================================
+   2. RESETS GENERALES
+   ========================================================================== */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
 }
-body{
+
+body {
     background-color: var(--colorFondo);
     color: var(--colorObscuro);
     line-height: 1.6;
-    font-family: 'OpenDescarga';
+    font-family: var(--fuenteCuerpo);
+    min-height: 100vh;
 }
-ul{
-    text-decoration: none;
+
+ul {
+    list-style: none; /* Simplificado desde li */
 }
-li{
-    list-style: none;
-    border-left: 20px;
-}
-a{
+
+a {
     text-decoration: none;
     font-family: var(--fuenteTitulos);
 }
-nav{
-    display: flex;
-}
-header{
+
+/* ==========================================================================
+   3. HEADER Y NAVEGACIÓN (¡CORREGIDO!)
+   ========================================================================== */
+header {
     display: flex;
     background-color: var(--colorClaro);
     justify-content: space-between; 
     align-items: center;
-    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.15);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
     top: 0;
     position: sticky;
     z-index: 1000;
     padding: 15px 50px;
+    width: 100%; /* Asegura que ocupe todo el ancho */
 }
-nav ul{
-    display: flex;
-    gap: 20px; /* espaciado*/
-    align-items: center;
-}
-nav a{
 
-    font-size: 0.95rem;
-    font-weight: bold;
-    color: inherit; /*el color de los contenedores padre*/
-}
-nav a:hover{
-    color: var(--colorSecundario);
-}
-#logo h1{
+#logo h1 {
     color: var(--colorPrincipal);
     font-size: 1.6rem;
     font-weight: 800;
+    margin-bottom: 0; /* Remueve márgenes que rompen el menú */
+    padding: 0;
 }
-h1, h2, h3{
-    font-family:var(--fuenteTitulos);
-    font-weight: 700 ;
-    letter-spacing: 1px;
-    margin-bottom: 15px;
+
+nav {
+    display: flex;
 }
-#btn_destacado, #btn_catalogo{
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 700; /*tipografia gruesa*/
-    background-color: var(--colorPrincipal);
-    color: var(--colorClaro);
+
+nav ul {
+    display: flex;
+    gap: 20px; 
+    align-items: center;
 }
-#btn_destacado:hover{
-    background-color: var(--colorClaro);
+
+nav a {
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: inherit; 
+    transition: color 0.2s ease;
+}
+
+nav a:hover {
     color: var(--colorSecundario);
 }
 
-.contenido_principal{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-.mentoria{
-    display: flex;
-    align-items: center;
-    gap: 40px;
-    padding: 60px 0;
-    flex-wrap: wrap;
-}
-.mentoria_contenido, .img{
-    flex: 1 1 300px;
-}
-.mentoria_contenido h2{
-    font-size: 2.5rem;
-    color: var(--colorPrincipal);
-    line-height: 1.2;
-}
-.mentoria_contenido p{
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-}
-
-.img img{
-    width: 100%;
-    height: auto;
-
-}
-/*btn de "ver catalogo"*/
-#btn_informacion {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: var(--colorPrincipal);
-    color: var(--colorClaro);
+h1, h2, h3 {
     font-family: var(--fuenteTitulos);
     font-weight: 700;
-    font-size: 1rem;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-top: 10px;
-}
-#btn_informacion:hover{
-    background-color: var(--colorSecundario);
+    letter-spacing: 1px;
 }
 
-.grid_mentoria {
+/* ==========================================================================
+   4. CONTENEDOR ESPECÍFICO DE MENTORÍA (¡MUDADO AQUÍ!)
+   ========================================================================== */
+/* Trasladamos el flexbox centrado del body a este contenedor propio */
+.contenedor-mentoria-pagina {
+    width: 100%;
+    max-width: 1200px;
+    margin: 40px auto; /* Centra el contenido horizontalmente en la pantalla */
+    padding: 0 20px;
+}
+
+.seccion-mentoria {
     display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 40px;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-.tarjeta_reglas, .tarjeta_video {
-    flex: 1;
-    min-width: 300px;
-    background-color: var(--colorClaro);
-    padding: 25px;
-    border-radius: 10px;
-    border: 1px solid var(--colorBorde);
+/* Distribución en dos columnas para pantallas medianas/grandes */
+@media (min-width: 768px) {
+    .seccion-mentoria {
+        flex-direction: row;
+        align-items: flex-start; /* Alinea arriba para evitar deformaciones */
+    }
+    .mentoria-contenido, 
+    .mentoria-video {
+        flex: 1;
+    }
 }
 
-.lista_reglas {
-    margin-top: 15px;
+.seccion-mentoria h2 {
+    color: #0056b3;
+    margin-top: 0;
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.seccion-mentoria h3 {
+    color: #1a1a1a;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.descripcion-mentoria {
+    color: #5f6368;
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+.reglas-lista {
     padding-left: 20px;
 }
 
-.lista_reglas li {
-    list-style: disc;
-    margin-bottom: 10px;
-    font-size: 0.95rem;
-}
-.contenedor_video {
-    position: relative;
-    padding-bottom: 56.25%; 
-    height: 0;
-    overflow: hidden;
-    border-radius: 8px;
-    margin-top: 15px;
+.reglas-lista li {
+    margin-bottom: 12px;
+    color: #333333;
+    font-size: 15px;
+    list-style-type: disc; /* Regresa los puntos de lista tradicionales a las reglas */
 }
 
-.contenedor_video iframe {
+/* Video Responsivo 16:9 */
+.mentoria-video {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    height: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.mentoria-video iframe {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    border: none;
-}
-.footer {
-  background-color: #111827;
-  color: #9ca3af;
-  padding: 3rem 1.5rem 1.5rem;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
-}
-
-.footer-brand {
-  max-width: 300px;
-}
-
-.footer-logo {
-  color: #ffffff;
-  font-size: 1.5rem;
-  font-weight: bold;
-  text-decoration: none;
-}
-
-.footer-brand p {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
-}
-
-.footer-links {
-  display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
-}
-
-.footer-col h4 {
-  color: #ffffff;
-  font-size: 0.875rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
-}
-
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.footer-col li {
-  margin-bottom: 0.5rem;
-}
-
-.footer-col a {
-  color: #9ca3af;
-  text-decoration: none;
-  font-size: 0.875rem;
-  transition: color 0.2s;
-}
-
-.footer-col a:hover {
-  color: #ffffff;
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 2.5rem auto 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid #1f2937;
-  text-align: center;
-  font-size: 0.875rem;
 }

@@ -78,190 +78,331 @@ h1, h3{
     margin-bottom: 15px;
     padding: 0 10px;
 }
-p{
-    padding: 0 10px;
-    margin-bottom: 10px;
-}
-.encabezado_ins h2{
-    
-    margin-top: 10px;
-    font-size: 0.9rem;
-    font-family:var(--fuenteTitulos);
-    font-weight: 600 ;
-    letter-spacing: 1px;
-    color: var(--colorPrincipal);
-
-}
-.encabezado_prof{
-    display: flex;
-    align-items: center; 
-    gap: 12px;           
-    margin-bottom: 10px;
-}
-#btn_destacado, #btn_catalogo{
-    padding: 10px 20px;
-    border-radius: 6px;
-    font-weight: 700; /*tipografia gruesa*/
-    background-color: var(--colorPrincipal);
-    color: var(--colorClaro);
-}
-#btn_destacado:hover{
-    background-color: var(--colorClaro);
-    color: var(--colorSecundario);
+.contenedor-cursos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #0b74de;
 }
 
-.contenido_principal{
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-/*CONTENIDO PRINCIPAL cards*/
-
-.catalogo{
-    padding: 40px 0;
-}
-#catalogo h2{
-    text-align: center;
-    color: var(--colorPrincipal);
-}
-.grid_grautitos{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-.tarjeta_curso{
-    background-color: var(--colorClaro);
-    border: 1px solid var(--colorBorde);
-    border-radius: 6px;
-    box-shadow: 0 2px 5px rgb(0, 0, 0, 0.15);
-    flex: 1 1 280px; /* grow shrink basis*/
-    max-width: 350px;
-    display: flex;
-    flex-direction: column;
-    /* aqui efecto*/
-    transition: transform 0.5s ease, box-shadow 0.5s ease;
-    
-}
-.tarjeta_curso:hover{
-     transform: translateY(-5px);
-     box-shadow: 0 6px rgb(0, 0, 0, 0.08);
-}
-.tarjeta_curso img{
-width: 100%;
-height: 150px;
-object-fit: cover;
-}
-.info_curso img{
-    width: 40px;
-    height: 40px;
-    object-fit: cover;
-}
-.info_curso img.star{
-    width: 80px;
-    height: 50px;
-    object-fit: cover;
-}
-.encabezado_ins{
-    display: flex;
-    align-items: center; 
-    gap: 12px;           
-    margin-bottom: 10px;
-}
-
-
-.nivel{
-    background-color:rgb(66, 99, 170);
-    color: var(--colorClaro);
-    border-radius: 7px;
-    font-family: var(--fuenteTitulos);
-    padding: 4px 10px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    align-self: flex-start;
-    margin-top: 10px;
-}
-.nivel_certificacion{
-    display: flex;
-    align-items: center; 
-    gap: 12px;           
-    margin-bottom: 10px;
-}
-.footer {
-  background-color: #111827;
-  color: #9ca3af;
-  padding: 3rem 1.5rem 1.5rem;
-  font-family: system-ui, -apple-system, sans-serif;
-}
-
-.footer-container {
-  max-width: 1200px;
-  margin: 0 auto;
+/* Estilos de la tarjeta individual */
+.tarjeta-curso {
+  background-color: #0f0460;
+  border: 1px border #dadce0;
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tarjeta-curso:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Contenedor de la imagen y el banner flotante */
+.imagen-contenedor {
+  position: relative;
+  width: 100%;
+  height: 140px;
+}
+
+.imagen-curso {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Banner blanco con borde azul (Estilo Coursera/Google) */
+.banner-institucion {
+  position: absolute;
+  top: 0;
+  left: 12px;
+  background-color: #ffffff;
+  width: 45px;
+  height: 65px;
+  border-left: 3px solid #1a73e8;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-institucion {
+  width: 24px;
+  height: 24px;
+}
+
+/* Bloque de contenido de texto */
+.contenido-curso {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Fila del logo e institución */
+.info-institucion {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.mini-logo {
+  width: 16px;
+  height: 16px;
+}
+
+.nombre-institucion {
+  font-size: 12px;
+  color: #5f6368;
+  font-weight: 500;
+}
+
+/* Título del curso */
+.titulo-curso {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f1f1f;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+  /* Limita el texto a 2 líneas si es muy largo */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 40px; 
+}
+
+/* Estrellas, nivel y tipo */
+.detalles-curso {
+  font-size: 12px;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 4px;
+  margin-bottom: 12px;
 }
 
-.footer-brand {
-  max-width: 300px;
-}
-
-.footer-logo {
-  color: #ffffff;
-  font-size: 1.5rem;
+.estrellas {
+  color: #202124;
   font-weight: bold;
-  text-decoration: none;
 }
 
-.footer-brand p {
-  margin-top: 0.5rem;
-  font-size: 0.875rem;
-  line-height: 1.5;
+.separador {
+  color: #dadce0;
 }
 
-.footer-links {
+/* Etiquetas dinámicas inferiores */
+.etiqueta-tendencia {
+  background-color: #fce8e6;
+  color: #c5221f;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+.etiqueta-programa {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+
+/* Enlace/Texto de prueba gratuita */
+.enlace-prueba {
+  font-size: 13px;
+  color: #1a73e8;
+  font-weight: 600;
+  margin-top: auto; /* Empuja el texto al fondo de la tarjeta */
+  cursor: pointer;
+}
+contenedor-cursos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px;
+  padding: 24px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f8;
+}
+
+/* ==========================================================================
+   Tarjeta Individual
+   ========================================================================== */
+.tarjeta-curso {
+  background-color: #dbdbdb;
+  border: 1px solid #e0e4ec;
+  border-radius: 16px;
+  overflow: hidden;
   display: flex;
-  gap: 3rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.footer-col h4 {
-  color: #ffffff;
-  font-size: 0.875rem;
+/* Efecto visual al pasar el mouse por encima */
+.tarjeta-curso:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* ==========================================================================
+   Sección Superior: Imagen y Estandarte Flotante
+   ========================================================================== */
+.imagen-contenedor {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: #eaeaea;
+}
+
+.imagen-curso {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* El pequeño estandarte blanco con borde azul/verde que cuelga */
+.banner-institucion {
+  position: absolute;
+  top: 0;
+  left: 16px;
+  background-color: #ffffff;
+  width: 42px;
+  height: 60px;
+  border-left: 3.5px solid #0056b3; /* Azul institucional */
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Texto de las siglas (UTL) dentro del estandarte */
+.siglas-banner {
+  font-size: 11px;
+  font-weight: 800;
+  color: #0056b3;
+  letter-spacing: -0.5px;
+}
+
+/* ==========================================================================
+   Sección Inferior: Textos y Datos
+   ========================================================================== */
+.contenido-curso {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Fila de pertenencia institucional */
+.info-institucion {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.nombre-institucion {
+  font-size: 12px;
+  color: #5f6368;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
+  letter-spacing: 0.3px;
 }
 
-.footer-col ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* Título de la carrera */
+.titulo-curso {
+  font-size: 16px;
+  font-weight: 700;
+  color: #054fae;
+  margin: 0 0 12px 0;
+  line-height: 1.4;
+  
+  /* Mantiene los títulos alineados limitando el texto a 2 líneas */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 44px; 
 }
 
-.footer-col li {
-  margin-bottom: 0.5rem;
+/* Metadatos: Calificaciones, Nivel y Tipo de programa */
+.detalles-curso {
+  font-size: 13px;
+  color: #5f6368;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
 }
 
-.footer-col a {
-  color: #9ca3af;
+.estrellas {
+  color: #cdbd0f;
+  font-weight: 700;
+}
+
+.separador {
+  color: #dadce0;
+  user-select: none;
+}
+
+/* ==========================================================================
+   Etiquetas Informativas Dinámicas (Badges)
+   ========================================================================== */
+.etiqueta-tendencia {
+  background-color: #76b3d2; /* Fondo verde claro tecnológico */
+  color: #137333;            /* Texto verde oscuro */
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: 16px;
+}
+
+.etiqueta-programa {
+  background-color: #7f9ed4; /* Fondo azul claro */
+  color: #1a73e8;            /* Texto azul oscuro */
+  font-size: 11px;
+  font-weight: 700;
+  padding: 5px 10px;
+  border-radius: 6px;
+  width: fit-content;
+  margin-bottom: 16px;
+}
+
+/* ==========================================================================
+   Botón / Enlace de Acción Inferior
+   ========================================================================== */
+.enlace-prueba {
+  font-size: 14px;
+  color: #0056b3;
+  font-weight: 700;
+  margin-top: auto; /* Fuerza al enlace a quedarse siempre abajo de la tarjeta */
   text-decoration: none;
-  font-size: 0.875rem;
+  cursor: pointer;
   transition: color 0.2s;
 }
 
-.footer-col a:hover {
-  color: #ffffff;
-}
-
-.footer-bottom {
-  max-width: 1200px;
-  margin: 2.5rem auto 0;
-  padding-top: 1.5rem;
-  border-top: 1px solid #1f2937;
-  text-align: center;
-  font-size: 0.875rem;
+.enlace-prueba:hover {
+  color: #003d82;
+  text-decoration: underline;
 }
